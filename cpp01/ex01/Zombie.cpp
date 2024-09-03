@@ -2,7 +2,7 @@
 
 Zombie::Zombie(std::string name)
 {
-	this->_name = name;
+	this->setName(name);
 	std::cout << "Zombie " << this->_name << " created" << std::endl;
 }
 
