@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:40:11 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/09/05 10:53:18 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/09/05 11:05:25 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ bool PhoneBook::is_valid_phone_number(const std::string &number)
 	for (size_t i = 0; i < number.length(); ++i)
 	{
 		if (!std::isdigit(number[i]))
+			return false;
+		if (number.length() != 9)
 			return false;
 	}
 	return true;
