@@ -6,17 +6,40 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:40:11 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/09/04 11:00:00 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/09/05 10:53:18 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
-#include <iomanip>
-#include <stdio.h>
-#include <stdlib.h>
 
 PhoneBook::PhoneBook() : id(0) {}
+
+PhoneBook::~PhoneBook() {}
+
+bool PhoneBook::is_valid_input(const std::string &input)
+{
+	if (input.empty())
+		return false;
+	for (size_t i = 0; i < input.length(); ++i)
+	{
+		if (!std::isspace(input[i]))
+			return true;
+	}
+	return false;
+}
+
+bool PhoneBook::is_valid_phone_number(const std::string &number)
+{
+	if (number.empty())
+		return false;
+	for (size_t i = 0; i < number.length(); ++i)
+	{
+		if (!std::isdigit(number[i]))
+			return false;
+	}
+	return true;
+}
 
 void PhoneBook::add()
 {
@@ -26,41 +49,46 @@ void PhoneBook::add()
 	std::string phone_number;
 	std::string darkest_secret;
 
-	std::cout << "First name: " << std::endl;
-	getline(std::cin, first_name);
-	if (first_name.empty())
+	do
 	{
-		std::cout << "Please enter a valid name." << std::endl;
-		return;
-	}
-	std::cout << "Last name: " << std::endl;
-	getline(std::cin, last_name);
-	if (last_name.empty())
+		std::cout << "First name: " << std::endl;
+		getline(std::cin, first_name);
+		if (!is_valid_input(first_name))
+			std::cout << "Please enter a valid name." << std::endl;
+	} while (!is_valid_input(first_name));
+	
+	do
 	{
-		std::cout << "Please enter a valid last name." << std::endl;
-		return;
-	}
-	std::cout << "Nickname: " << std::endl;
-	getline(std::cin, nick_name);
-	if (nick_name.empty())
+		std::cout << "Last name: " << std::endl;
+		getline(std::cin, last_name);
+		if (!is_valid_input(last_name))
+			std::cout << "Please enter a valid last name." << std::endl;
+	} while (!is_valid_input(last_name));
+	
+	do
 	{
-		std::cout << "Please enter a valid nickname." << std::endl;
-		return;
-	}
-	std::cout << "Phone number: " << std::endl;
-	getline(std::cin, phone_number);
-	if (phone_number.empty())
+		std::cout << "Nickname: " << std::endl;
+		getline(std::cin, nick_name);
+		if (!is_valid_input(nick_name))
+			std::cout << "Please enter a valid nickname." << std::endl;
+	} while (!is_valid_input(nick_name));
+	
+	do
 	{
-		std::cout << "Please enter a valid phone number." << std::endl;
-		return;
-	}
-	std::cout << "Darkest secret: " << std::endl;
-	getline(std::cin, darkest_secret);
-	if (darkest_secret.empty())
+		std::cout << "Phone number: " << std::endl;
+		getline(std::cin, phone_number);
+		if (!is_valid_phone_number(phone_number))
+			std::cout << "Please enter a valid phone number." << std::endl;
+	} while (!is_valid_phone_number(phone_number));
+
+	do
 	{
-		std::cout << "Please enter a valid secret." << std::endl;
-		return;
-	}
+		std::cout << "Darkest secret: " << std::endl;
+		getline(std::cin, darkest_secret);
+		if (!is_valid_input(darkest_secret))
+			std::cout << "Please enter a valid secret." << std::endl;
+	} while (!is_valid_input(darkest_secret));
+	
 	contacts[id++ % 8] = Contact(first_name, last_name, nick_name, phone_number, darkest_secret);
 }
 
