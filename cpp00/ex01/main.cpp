@@ -19,7 +19,7 @@ int main()
 	std::string option;
 	PhoneBook phonebook;
 
-	while (1)
+	while (!std::cin.eof())
 	{
 		std::cout << "\033c";
 		std::cout << "Please insert a command:" << std::endl;

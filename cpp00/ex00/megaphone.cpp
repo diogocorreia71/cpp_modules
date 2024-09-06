@@ -11,9 +11,6 @@
 /* ************************************************************************** */
 
 #include <iostream>
-#include <string>
-#include <algorithm>
-
 
 int main(int argc, char **argv)
 {
@@ -21,8 +18,9 @@ int main(int argc, char **argv)
 	{
 		for (int i = 1; i < argc; i++)
 		{
+			for (int j = 0; argv[i][j] != '\0'; j++)
+				argv[i][j] = std::toupper(argv[i][j]);
 			std::string av = argv[i];
-			std::transform(av.begin(), av.end(), av.begin(), ::toupper);
 			std::cout << av;
 			if (i < argc - 1)
 				std::cout << " ";

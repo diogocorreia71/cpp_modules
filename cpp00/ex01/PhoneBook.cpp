@@ -57,7 +57,7 @@ void PhoneBook::add()
 		getline(std::cin, first_name);
 		if (!is_valid_input(first_name))
 			std::cout << "Please enter a valid name." << std::endl;
-	} while (!is_valid_input(first_name));
+	} while (!std::cin.eof() && !is_valid_input(first_name));
 	
 	do
 	{
@@ -65,7 +65,7 @@ void PhoneBook::add()
 		getline(std::cin, last_name);
 		if (!is_valid_input(last_name))
 			std::cout << "Please enter a valid last name." << std::endl;
-	} while (!is_valid_input(last_name));
+	} while (!std::cin.eof() && !is_valid_input(last_name));
 	
 	do
 	{
@@ -73,7 +73,7 @@ void PhoneBook::add()
 		getline(std::cin, nick_name);
 		if (!is_valid_input(nick_name))
 			std::cout << "Please enter a valid nickname." << std::endl;
-	} while (!is_valid_input(nick_name));
+	} while (!std::cin.eof() && !is_valid_input(nick_name));
 	
 	do
 	{
@@ -81,7 +81,7 @@ void PhoneBook::add()
 		getline(std::cin, phone_number);
 		if (!is_valid_phone_number(phone_number))
 			std::cout << "Please enter a valid phone number." << std::endl;
-	} while (!is_valid_phone_number(phone_number));
+	} while (!std::cin.eof() && !is_valid_phone_number(phone_number));
 
 	do
 	{
@@ -89,7 +89,7 @@ void PhoneBook::add()
 		getline(std::cin, darkest_secret);
 		if (!is_valid_input(darkest_secret))
 			std::cout << "Please enter a valid secret." << std::endl;
-	} while (!is_valid_input(darkest_secret));
+	} while (!std::cin.eof() && !is_valid_input(darkest_secret));
 	
 	contacts[id++ % 8] = Contact(first_name, last_name, nick_name, phone_number, darkest_secret);
 }
@@ -122,7 +122,7 @@ void PhoneBook::search()
 	}
 	std::cout << "Choose an index to display" << std::endl;
 	std::cout << "Command BACK to return" << std::endl;
-	while (1)
+	while (!std::cin.eof())
 	{
 		getline(std::cin, index);
 
