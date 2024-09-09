@@ -1,4 +1,16 @@
-SRCS = $(wildcard *.cpp)
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/09/09 12:14:46 by diodos-s          #+#    #+#              #
+#    Updated: 2024/09/09 12:15:18 by diodos-s         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+SRCS = HumanA.cpp HumanB.cpp main.cpp Weapon.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 NAME = UnnecessaryViolence
@@ -11,7 +23,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 		$(CPP) $(CPPFLAGS) -o $(NAME) $(OBJS)
 
-%.o: %.c
+%.o: %.cpp
 		$(CPP) $(CPPFLAGS) -c $< -o $@
 
 clean:

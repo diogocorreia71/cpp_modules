@@ -1,12 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/09 10:17:08 by diodos-s          #+#    #+#             */
+/*   Updated: 2024/09/09 11:39:01 by diodos-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Zombie.hpp"
 
-Zombie::Zombie(std::string name)
+Zombie::Zombie()
 {
-	this->setName(name);
-	std::cout << "Zombie " << this->_name << " created" << std::endl;
 }
-
-Zombie::Zombie(void){}
 
 Zombie::~Zombie()
 {

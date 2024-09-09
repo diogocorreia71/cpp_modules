@@ -1,4 +1,16 @@
-SRCS = $(wildcard *.cpp)
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/09/09 10:16:02 by diodos-s          #+#    #+#              #
+#    Updated: 2024/09/09 10:16:55 by diodos-s         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+SRCS = main.cpp Zombie.cpp zombieHorde.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 NAME = MoarBrainz
@@ -11,7 +23,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 		$(CPP) $(CPPFLAGS) -o $(NAME) $(OBJS)
 
-%.o: %.c
+%.o: %.cpp
 		$(CPP) $(CPPFLAGS) -c $< -o $@
 
 clean:
