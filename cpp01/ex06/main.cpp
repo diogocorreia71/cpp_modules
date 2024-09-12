@@ -12,7 +12,7 @@
 
 #include "Harl.hpp"
 
-int harl_convert(char *argv)
+int harlConvert(char *argv)
 {
 	std::string str[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
@@ -22,9 +22,9 @@ int harl_convert(char *argv)
 	return (-1);
 }
 
-void harl_switch(char *argv, Harl &harl)
+void harlSwitch(char *argv, Harl &harl)
 {
-	switch (harl_convert(argv))
+	switch (harlConvert(argv))
 	{
 		case 0:
 			harl.complain("DEBUG");
@@ -50,6 +50,6 @@ int main(int argc, char **argv)
 	if (argc != 2)
 		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 	else
-		harl_switch(argv[1], harl);
+		harlSwitch(argv[1], harl);
 	return 0;
 }
