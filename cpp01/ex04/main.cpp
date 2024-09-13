@@ -6,20 +6,27 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 13:48:43 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/09/09 13:48:44 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/09/13 12:03:26 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
 
-int main()
+int main(int argc, char **argv)
 {
+	if (argc != 4)
+	{
+		std::cout << "Invalid number of arguments" << std::endl;
+		return 1;
+	}
 	std::ifstream inFile;
-	std::string s1 = "Diogo";
-	std::string s2 = "Correia";
+	std::string s1;
+	std::string s2;
 
-	inFile.open("file.txt");
+	inFile.open(argv[1]);
+	s1 = argv[2];
+	s2 = argv[3];
 	if (inFile.fail())
 	{
 		std::cout << "Error opening file." << std::endl;

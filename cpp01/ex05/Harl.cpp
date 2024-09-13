@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 14:14:57 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/09/09 14:17:39 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/09/13 12:13:32 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Harl::Harl()
 
 Harl::~Harl()
 {
-	std::cout << "Harl has been distroyed" << std::endl;
+	std::cout << "Harl has been destroyed" << std::endl;
 }
 
 void Harl::debug()

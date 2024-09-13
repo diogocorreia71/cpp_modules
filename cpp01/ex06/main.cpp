@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 14:19:24 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/09/09 14:19:25 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/09/13 12:24:27 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int harlConvert(char *argv)
 	for (int i = 0; i < 4; i++)
 		if (str[i] == argv)
 			return (i);
-	return (-1);
+	return (1);
 }
 
 void harlSwitch(char *argv, Harl &harl)
@@ -28,15 +28,16 @@ void harlSwitch(char *argv, Harl &harl)
 	{
 		case 0:
 			harl.complain("DEBUG");
-			break;
+			std::cout << std::endl;
 		case 1:
 			harl.complain("INFO");
-			break;
+			std::cout << std::endl;
 		case 2:
 			harl.complain("WARNING");
-			break;
+			std::cout << std::endl;
 		case 3:
 			harl.complain("ERROR");
+			std::cout << std::endl;
 			break;
 		default:
 			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
