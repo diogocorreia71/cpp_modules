@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 09:24:09 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/09/13 09:19:32 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/09/17 09:40:03 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int main()
 {
 	Zombie *myZ;
-	Zombie *novo;
 
 	myZ = newZombie("Zacarias");
 	myZ->announce();
