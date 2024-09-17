@@ -1,4 +1,16 @@
-SRCS = $(wildcard *.cpp)
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/09/17 09:42:42 by diodos-s          #+#    #+#              #
+#    Updated: 2024/09/17 09:42:59 by diodos-s         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+SRCS = Fixed.cpp main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 NAME = fixed
@@ -11,7 +23,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 		$(CPP) $(CPPFLAGS) -o $(NAME) $(OBJS)
 
-%.o: %.c
+%.o: %.cpp
 		$(CPP) $(CPPFLAGS) -c $< -o $@
 
 clean:
