@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:55:31 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/09/17 12:54:29 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/09/18 10:58:53 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ int main( void ) {
 	std::cout << "b is " << b << std::endl;
 	std::cout << "c is " << c << std::endl;
 	std::cout << "d is " << d << std::endl;
+	
 	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
 	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
 	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+	
 	return 0;
 }
