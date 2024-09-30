@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:18:54 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/09/17 14:30:25 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/09/30 12:43:01 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ Fixed::Fixed() : _value(0)
 
 Fixed::Fixed(const Fixed &other)
 {
-	_value = other._value;
 	std::cout << "Copy constructor called" << std::endl;
+	_value = other._value;
+	// *this = other;
 }
 
 Fixed &Fixed::operator=(const Fixed &other)
