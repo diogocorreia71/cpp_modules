@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 12:18:54 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/09/30 15:49:47 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/01 11:09:23 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,32 +71,44 @@ int Fixed::toInt( void ) const
 
 bool Fixed::operator>(const Fixed &other) const
 {
-	return this->_value > other._value;
+	if (this->_value > other._value)
+		return true;
+	return false;
 }
 
 bool Fixed::operator<(const Fixed &other) const
 {
-	return this->_value < other._value;
+	if (this->_value < other._value)
+		return true;
+	return false;
 }
 
 bool Fixed::operator>=(const Fixed &other) const
 {
-	return this->_value >= other._value;
+	if (this->_value >= other._value)
+		return true;
+	return false;
 }
 
 bool Fixed::operator<=(const Fixed &other) const
 {
-	return this->_value <= other._value;
+	if (this->_value <= other._value)
+		return true;
+	return false;
 }
 
 bool Fixed::operator==(const Fixed &other) const
 {
-	return this->_value == other._value;
+	if (this->_value == other._value)
+		return true;
+	return false;
 }
 
 bool Fixed::operator!=(const Fixed &other) const
 {
-	return this->_value != other._value;
+	if (this->_value != other._value)
+		return true;
+	return false;
 }
 
 Fixed Fixed::operator+(const Fixed &other) const
@@ -145,7 +157,7 @@ Fixed Fixed::operator--(int)
 	return temp;
 }
 
-Fixed& min(Fixed &a, Fixed &b)
+Fixed& Fixed::min(Fixed &a, Fixed &b)
 {
 	if (a < b)
 		return a;
@@ -159,7 +171,7 @@ const Fixed& Fixed::min(const Fixed &a, const Fixed &b)
 	return b;
 }
 
-Fixed& max(Fixed &a, Fixed &b)
+Fixed& Fixed::max(Fixed &a, Fixed &b)
 {
 	if (a > b)
 		return a;
