@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/01 12:10:27 by diodos-s          #+#    #+#             */
+/*   Updated: 2024/10/01 12:23:51 by diodos-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap()
@@ -11,24 +23,28 @@ ClapTrap::ClapTrap(std::string name)
 	this->_name = name;
 	this->_hp = 10;
 	this->_energy = 10;
-	this->_atack = 0;
+	this->_attack = 0;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
-	*this = other;
 	std::cout << "Copy constructor called" << std::endl;
+	_name = other._name;
+	_hp = other._hp;
+	_energy = other._energy;
+	_attack = other._attack;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	if (this == &other)
-		return *this;
-	this->_name = other._name;
-	this->_hp = other._hp;
-	this->_energy = other._energy;
-	this->_atack = other._atack;
+	if (this != &other)
+	{
+		_name = other._name;
+		_hp = other._hp;
+		_energy = other._energy;
+		_attack = other._attack;	
+	}
 	return *this;
 }
 
@@ -39,7 +55,7 @@ ClapTrap::~ClapTrap()
 
 void ClapTrap::attack(const std::string& target)
 {
-	std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_atack << " points of damage!" << std::endl;
+	std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_attack << " points of damage!" << std::endl;
 	this->_energy--;
 }
 
@@ -72,5 +88,5 @@ int ClapTrap::getEnergy() const
 
 int ClapTrap::getAttack() const
 {
-	return this->_atack;
+	return this->_attack;
 }

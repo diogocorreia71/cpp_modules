@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/01 12:10:29 by diodos-s          #+#    #+#             */
+/*   Updated: 2024/10/01 12:21:54 by diodos-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CLAPTRAP_HPP
 #define CLAPTRAP_HPP
 
@@ -9,7 +21,7 @@ class ClapTrap
 		std::string _name;
 		int _hp;
 		int _energy;
-		int _atack;
+		int _attack;
 
 	public:
 		ClapTrap();
