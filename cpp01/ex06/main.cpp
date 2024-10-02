@@ -19,7 +19,7 @@ int harlConvert(char *argv)
 	for (int i = 0; i < 4; i++)
 		if (str[i] == argv)
 			return (i);
-	return (1);
+	return (4);
 }
 
 void harlSwitch(char *argv, Harl &harl)
