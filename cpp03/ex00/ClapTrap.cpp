@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 12:10:27 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/01 15:02:46 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/02 13:40:05 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,17 @@
 ClapTrap::ClapTrap()
 {
 	std::cout << "Default constructor called" << std::endl;
+	_hp = 10;
+	_energy = 10;
+	_attack = 0;
 }
 
-ClapTrap::ClapTrap(std::string name)
+ClapTrap::ClapTrap(std::string name) : _name(name)
 {
-	std::cout << "ClapTrap constructor called" << std::endl;
-	this->_name = name;
-	this->_hp = 10;
-	this->_energy = 10;
-	this->_attack = 0;
+	std::cout << "ClapTrap constructor called for " << _name << std::endl;
+	_hp = 10;
+	_energy = 10;
+	_attack = 0;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other)
@@ -55,18 +57,21 @@ ClapTrap::~ClapTrap()
 
 void ClapTrap::attack(const std::string& target)
 {
-	if (this->_energy > 0 || this->_hp > 0) 
+	if (this->_energy <= 0 || this->_hp <= 0) 
 	{
-		std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_attack << " points of damage!" << std::endl;
-		this->_energy--;	
+		std::cout << "ClapTrap " << this->_name << " has no energy left" << std::endl;
+		return;
 	}
-	std::cout << "ClapTrap " << this->_name << " has no energy left" << std::endl;
+	std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_attack << " points of damage!" << std::endl;
+	this->_energy--;	
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
 	std::cout << "ClapTrap " << this->_name << " was attacked " << amount << " times" << std::endl;
 	this->_hp -= amount;
+	if (this->_hp <= 0)
+		std::cout << "ClapTrap " << this->_name << " has no hit points left" << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
