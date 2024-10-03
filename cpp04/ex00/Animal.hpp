@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 09:34:04 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/03 09:44:32 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/03 15:42:15 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ class Animal
 		Animal();
 		Animal(const Animal &other);
 		Animal& operator=(const Animal &other);
-		~Animal();
+		virtual ~Animal();
+
+		std::string getType() const;
+		virtual void makeSound() const;
 };
 
 #endif
