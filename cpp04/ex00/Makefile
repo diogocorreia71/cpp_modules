@@ -6,14 +6,14 @@
 #    By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/17 09:42:42 by diodos-s          #+#    #+#              #
-#    Updated: 2024/10/03 11:33:27 by diodos-s         ###   ########.fr        #
+#    Updated: 2024/10/03 09:36:29 by diodos-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ClapTrap.cpp FragTrap.cpp main.cpp ScavTrap.cpp
+SRCS = Animal.cpp Cat.cpp Dog.cpp main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
-NAME = FragTrap
+NAME = ScavTrap
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CPP = c++
 RM = rm -f
