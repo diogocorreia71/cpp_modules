@@ -6,11 +6,11 @@
 #    By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/17 09:42:42 by diodos-s          #+#    #+#              #
-#    Updated: 2024/10/03 15:27:54 by diodos-s         ###   ########.fr        #
+#    Updated: 2024/10/04 09:41:21 by diodos-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = Animal.cpp Cat.cpp Dog.cpp main.cpp
+SRCS = Animal.cpp Cat.cpp Dog.cpp main.cpp WrongAnimal.cpp WrongCat.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 NAME = a.out

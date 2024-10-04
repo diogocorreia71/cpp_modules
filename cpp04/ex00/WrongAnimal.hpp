@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:58:18 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/03 16:03:20 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/04 09:39:36 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class WrongAnimal
 		WrongAnimal();
 		WrongAnimal(const WrongAnimal &other);
 		WrongAnimal &operator=(const WrongAnimal &other);
-		~WrongAnimal();
+		virtual ~WrongAnimal();
 
 		std::string getType() const;
 		void makeSound() const;

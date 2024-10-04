@@ -6,13 +6,13 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 14:20:01 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/03 15:16:21 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/04 08:58:29 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog()
+Dog::Dog() : Animal()
 {
     std::cout << "Dog default constructor called" << std::endl;
     type = "Dog";

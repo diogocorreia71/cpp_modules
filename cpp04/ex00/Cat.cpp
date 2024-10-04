@@ -6,13 +6,13 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 14:53:06 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/03 15:16:26 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/04 08:58:55 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat()
+Cat::Cat() : Animal()
 {
 	std::cout << "Cat default constructor called" << std::endl;
 	type = "Cat";
