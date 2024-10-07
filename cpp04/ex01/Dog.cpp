@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 14:20:01 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/04 14:25:15 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/07 11:38:40 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,9 @@ Dog::~Dog()
 void Dog::makeSound() const
 {
     std::cout << type << " goes BARK" << std::endl;
+}
+
+Brain* Dog::getBrain() const
+{
+    return this->brain;
 }

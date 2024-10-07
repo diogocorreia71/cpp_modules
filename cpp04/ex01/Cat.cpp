@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 14:53:06 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/04 14:21:16 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/07 11:38:43 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,3 +47,7 @@ void Cat::makeSound() const
 	std::cout << type << " goes MEOW" << std::endl;
 }
 
+Brain* Cat::getBrain() const
+{
+	return this->brain;
+}

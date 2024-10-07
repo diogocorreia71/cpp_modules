@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:00:44 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/04 10:15:41 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/07 11:42:37 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,38 +15,47 @@
 #include "Cat.hpp"
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
+#include "Brain.hpp"
 
 int main()
 {
-    const Animal* meta = new Animal();
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
-    
-    std::cout << std::endl;
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
-    i->makeSound(); //will output the cat sound!
-    j->makeSound();
-    meta->makeSound();
-
-    std::cout << std::endl;
-    delete meta;
-    delete j;
-    delete i;
-
-    std::cout << std::endl;
-
-	const WrongAnimal* wrongAnimal = new WrongAnimal();
-	const WrongAnimal* wrongCat = new WrongCat();
+	const int numAnimals = 4;
+	Animal* animals[numAnimals];
 	
-	std::cout << std::endl;
-	std::cout << wrongCat->getType() << " " << std::endl;
-	wrongCat->makeSound(); // will output the wrong cat sound
-	wrongAnimal->makeSound();
+	for (int i = 0; i < numAnimals / 2; i++)
+		animals[i] = new Dog();
 
-	std::cout << std::endl;
-	delete wrongCat;
-	delete wrongAnimal;
+	for (int i = numAnimals / 2; i < numAnimals; i++)
+		animals[i] = new Cat();
+
+	for (int i = 0; i < numAnimals; i++)
+		animals[i]->makeSound();
+
+	for (int i = 0; i < numAnimals; i++)
+		delete animals[i];
+	
+
+	// Dog dog1;
+    // dog1.getBrain()->setIdea(0, "Dog's special idea"); 
+
+    // std::cout << "Dog1's first idea: " << dog1.getBrain()->getIdea(0) << std::endl;
+
+    // Dog dog2(dog1); 
+    // std::cout << "Dog2's first idea (copied from Dog1): " << dog2.getBrain()->getIdea(0) << std::endl;
+
+    // dog2.getBrain()->setIdea(0, "Dog2's own idea"); 
+
+    // std::cout << "Dog1's first idea after modification to Dog2: " << dog1.getBrain()->getIdea(0) << std::endl;
+    // std::cout << "Dog2's first idea after modification: " << dog2.getBrain()->getIdea(0) << std::endl;
+
+	// Dog dog3;
+	// dog3 = dog1;
+	// std::cout << "Dog3's first idea (copied from Dog1): " << dog3.getBrain()->getIdea(0) << std::endl;
+
+	// dog3.getBrain()->setIdea(0, "Dog3's own idea");
+	
+	// std::cout << "Dog1's first idea after modification to Dog3: " << dog1.getBrain()->getIdea(0) << std::endl;
+	// std::cout << "Dog3's first idea after modification: " << dog3.getBrain()->getIdea(0) << std::endl;
 
     return 0;
 }
