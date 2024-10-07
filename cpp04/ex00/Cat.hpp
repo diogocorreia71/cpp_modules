@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 14:50:20 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/04 09:21:16 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:13:24 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Cat : public Animal
 		Cat();
 		Cat(const Cat &other);
 		Cat& operator=(const Cat &other);
-		~Cat();
+		virtual ~Cat();
 
 		void makeSound() const;
 };
