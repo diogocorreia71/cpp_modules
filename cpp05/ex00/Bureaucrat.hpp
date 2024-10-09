@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:48:04 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/07 17:43:04 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/09 12:17:34 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,22 @@ class Bureaucrat
 		Bureaucrat &operator=(const Bureaucrat &other);
 		~Bureaucrat();
 		
-		const std::string getName() const;
+		std::string getName() const;
 		int getGrade() const;
 		void incrementGrade();
 		void decrementGrade();
+		
+		class GradeTooHighException : public std::exception
+		{
+			const char* what() const throw();
+		};
+		
+		class GradeTooLowException : public std::exception
+		{
+			const char* what() const throw();
+		};
 };
+
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &other);
 
 #endif
