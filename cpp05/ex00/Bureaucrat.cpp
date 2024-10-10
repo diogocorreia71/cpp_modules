@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:10:06 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/09 12:17:57 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/10 11:05:29 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Bureaucrat::Bureaucrat() : _name("Default"), _grade(150)
 	std::cout << "Bureaucrat default constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
+Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name)
 {
 	std::cout << "Bureaucrat: " << _name << " constructor called" << std::endl;
 	if (grade < 1)
