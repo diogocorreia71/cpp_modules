@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 10:00:35 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/14 10:43:14 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/14 13:32:35 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,23 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 void ShrubberyCreationForm::executor() const
 {
-	std::ofstream ofs(_target + "_shrubbery");
-	if (ofs)
+	std::string file(_target + "_shrubbery");
+	std::ofstream outputFile(file.c_str());
+	if (outputFile.fail())
 	{
 		std::cerr << "Error: Could not create shrubbery file" << std::endl;
 		return;
 	}
-	ofs << "      /\\\n";
-    ofs << "     /\\*\\\n";
-    ofs << "    /\\O\\*\\\n";
-    ofs << "   /*/\\/\\/\\\n";
-    ofs << "  /\\O\\/\\*\\/\\\n";
-    ofs << " /\\*\\/\\*\\/\\/\\\n";
-    ofs << "/\\O\\/\\/*/\\/O/\\\n";
-    ofs << "      ||\n";
-    ofs << "      ||\n";
-    ofs << "      ||\n";
-	ofs.close();
+	outputFile << "      /\\\n";
+    outputFile << "     /\\*\\\n";
+    outputFile << "    /\\O\\*\\\n";
+    outputFile << "   /*/\\/\\/\\\n";
+    outputFile << "  /\\O\\/\\*\\/\\\n";
+    outputFile << " /\\*\\/\\*\\/\\/\\\n";
+    outputFile << "/\\O\\/\\/*/\\/O/\\\n";
+    outputFile << "      ||\n";
+    outputFile << "      ||\n";
+    outputFile << "      ||\n";
+	outputFile.close();
 	std::cout << "Shrubbery created for target: " << _target << std::endl;
 }

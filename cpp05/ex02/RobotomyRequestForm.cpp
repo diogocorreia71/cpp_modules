@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:09:27 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/14 11:43:12 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/14 13:33:34 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 void RobotomyRequestForm::executor() const
 {
 	std::cout << "* Drilling noises *" << std::endl;
-	std::srand(std::time(nullptr));
-	if (std::rand() % 2 == 0)
+	if (rand() % 2 == 0)
 		std::cout << _target << " has been robotomized successfully!" << std::endl;
 	else
 		std::cout << "Robotomy of " << _target << " failed!" << std::endl;
