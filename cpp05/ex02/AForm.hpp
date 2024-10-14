@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:31:06 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/10 15:24:55 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/14 09:41:29 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ class AForm
 		bool getAFormStatus() const;
 		int getSignGrade() const;
 		int getExecGrade() const;
+		bool getSignedForm() const;
 		void beSigned(Bureaucrat &bureaucrat);
-		virtual void execute(Bureaucrat const &executer) const = 0;
+		void execute(Bureaucrat const &executor) const;
+		virtual void executor() const = 0;
 
 		class GradeTooHighException : public std::exception
 		{

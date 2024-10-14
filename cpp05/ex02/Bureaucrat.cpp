@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:10:06 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/10 14:44:16 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/14 09:48:07 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,28 @@ void Bureaucrat::decrementGrade()
 	this->_grade++;
 }
 
-void Bureaucrat::signForm(Form &form)
+void Bureaucrat::signForm(AForm &form)
 {
 	if (this->_grade <= form.getSignGrade())
 		form.beSigned(*this);
 	else
 		std::cout << this->_name << " couldn't sign " << form.getName() << " because grade is too low" << std::endl;
+}
+
+void Bureaucrat::executeForm(AForm const &form)
+{
+	if (form.getSignedForm())
+	{
+		if (this->getGrade() < form.getExecGrade())
+		{
+			std::cout << this->_name << " executed " << form.getName() << std::endl;
+			form.execute(*this);
+		}
+		else
+			std::cout << this->_name << " doesn't have clearence to execute " << form.getName() << std::endl;
+	}
+	else
+		std::cout << form.getName() << " isn't signed" << std::endl;
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()

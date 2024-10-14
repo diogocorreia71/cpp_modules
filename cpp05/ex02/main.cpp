@@ -6,49 +6,56 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 09:44:58 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/10 14:37:58 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/14 12:31:03 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main()
 {
 	try
 	{
-		Bureaucrat b1("Alice", 1);
-		Bureaucrat b2("Bob", 150);
+		Bureaucrat alice("Alice", 5);
+		Bureaucrat bob("Bob", 45);
+		Bureaucrat charlie("Charlie", 140);
 
-		std::cout << b1 << std::endl;
-		std::cout << b2 << std::endl;
+		RobotomyRequestForm robotForm("Bender");
+		ShrubberyCreationForm shrubForm("Garden");
+		PresidentialPardonForm pardonForm("John Doe");
+		
+		std::cout << "\n=== Testing ShrubberyCreationForm ===" << std::endl;
+		std::cout << shrubForm << std::endl;
+		shrubForm.beSigned(charlie);
+		shrubForm.execute(charlie);
 
-		Form form1("Form1", 50, 50);
-		Form form2("Form2", 1, 1);
+		std::cout << "\n=== Testing RobotomyRequestForm ===" << std::endl;
+		std::cout << robotForm << std::endl;
+		robotForm.beSigned(bob);
+		robotForm.execute(bob);
 
-		std::cout << form1 << std::endl;
-		std::cout << form2 << std::endl;
+		std::cout << "\n=== Testing PresidentialPardonForm ===" << std::endl;
+		std::cout << pardonForm << std::endl;
+		pardonForm.beSigned(alice);
+		pardonForm.execute(alice);
 
-		std::cout << "Bob tries to sign Form1:" << std::endl;
-		b2.signForm(form1);
-
-		std::cout << "Alice tries to sign Form1:" << std::endl;
-		b1.signForm(form1);
-
-		std::cout << "Bob tries to sign Form2:" << std::endl;
-		b2.signForm(form2);
-
-		std::cout << "Alice tries to sign Form2:" << std::endl;
-		b1.signForm(form2);
+		std::cout << "\n=== Testing Exception Handling ===" << std::endl;
+		PresidentialPardonForm unsignedPardon("Unsigned Pardon");
+		alice.executeForm(unsignedPardon);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << "Exception caught: " << e.what() << '\n';
 	}
+	
 	try
 	{
-		std::cout << "Attempt to create a form with invalid grade requirements:" << std::endl;
-		Form invalidForm("InvalidForm", 0, 200);
+		std::cout << "\n=== Testing Invalid Form Creation ===" << std::endl;
+		ShrubberyCreationForm invalidForm("InvalidTarget"); 
 	}
 	catch(const std::exception& e)
 	{
