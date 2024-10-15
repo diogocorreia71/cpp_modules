@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:20:43 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/14 16:26:21 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/15 09:52:42 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,14 @@ Intern::~Intern()
 
 AForm *Intern::makeForm(std::string form, std::string target)
 {
-	std::string forms[3] = {"presidential", "robotomy", "shrubbery"};
+	std::string forms[3] = {"pardon request", "robotomy request", "shrubbery request"};
 	AForm *(Intern::*func_ptr[3])(std::string target) = {&Intern::makePardon, &Intern::makeRobotomy, &Intern::makeShrubbery};
-	AForm *form_ptr;
 	
 	for (int i = 0; i < 3; i++)
 	{
 		if (forms[i] == form)
 		{
-			form_ptr = (this->*func_ptr[i])(target);
+			AForm *form_ptr = (this->*func_ptr[i])(target);
 			std::cout << "Intern creates " << form_ptr->getName() << std::endl;
 			return form_ptr;
 		}
