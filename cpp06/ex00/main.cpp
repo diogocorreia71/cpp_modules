@@ -6,28 +6,20 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 17:38:19 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/16 17:44:05 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/18 09:42:57 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-int main()
+int main(int argc, char **argv)
 {
-	std::cout << "Testing char input:" << std::endl;
-	ScalarConverter::convert("A");
-
-	std::cout << "\nTesting int input:" << std::endl;
-    ScalarConverter::convert("42");
-
-    std::cout << "\nTesting float input:" << std::endl;
-    ScalarConverter::convert("42.0f");
-
-    std::cout << "\nTesting double input:" << std::endl;
-    ScalarConverter::convert("42.0");
-
-    std::cout << "\nTesting invalid input:" << std::endl;
-    ScalarConverter::convert("HelloWorld");
-
+	if (argc != 2)
+	{
+		std::cerr << "Usage: ./convert <literal>" << std::endl;
+		return 1;
+	}
+	std::string literal = argv[1];
+	ScalarConverter::convert(literal);
     return 0;
 }

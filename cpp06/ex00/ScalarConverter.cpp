@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:18:51 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/16 17:41:36 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/18 14:01:47 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ ScalarConverter::ScalarConverter(const ScalarConverter &other)
 
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 {
-	
+	(void)other;
+	return *this;
 }
 
 ScalarConverter::~ScalarConverter()
@@ -41,7 +42,7 @@ ScalarConverter::Type ScalarConverter::identifyType(const std::string &literal)
 	std::strtol(literal.c_str(), &end, 10);
 	if (*end == '\0')
 		return INT;
-	if (literal.find('f') != std::string::npos && literal.back() == 'f')
+	if (literal.find('f') != std::string::npos && literal[literal.length() - 1] == 'f')
 		return FLOAT;
 	std::strtod(literal.c_str(), &end);
 	if (*end == '\0')
@@ -49,44 +50,94 @@ ScalarConverter::Type ScalarConverter::identifyType(const std::string &literal)
 	return INVALID;
 }
 
-void ScalarConverter::convertChar(const std::string &literal)
+void ScalarConverter::convertFromChar(char value)
 {
-	std::cout << "Converting as char: " << literal[0] << std::endl;
+	std::cout << "char: '" << value << "'" << std::endl;
+	std::cout << "int: " << static_cast<int>(value) << std::endl;
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: " << static_cast<float>(value) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(value) << std::endl;
 }
 
-void ScalarConverter::convertInt(const std::string &literal)
+void ScalarConverter::convertFromInt(int value)
 {
-	std::cout << "Converting as int: " << std::stoi(literal) << std::endl;
+	if (value < std::numeric_limits<char>::min() || value > std::numeric_limits<char>::max())
+		std::cout << "char: impossible" << std::endl;
+	else if (isprint(static_cast<char>(value)))
+		std::cout << "char: '" << static_cast<char>(value) << "'" << std::endl;
+	else
+		std::cout << "char: Non displayable" << std::endl;
+
+	std::cout << "int: " << value << std::endl;
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: " << static_cast<float>(value) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(value) << std::endl;
 }
 
-void ScalarConverter::convertFloat(const std::string &literal)
+void ScalarConverter::convertFromFloat(float value)
 {
-	std::cout << "Converting as float: " << std::stof(literal) << "f" << std::endl;
+	if (std::isnan(value) || std::isinf(value))
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+	}
+	else
+	{
+		if (value < std::numeric_limits<char>::min() || value > std::numeric_limits<char>::max())
+			std::cout << "char: impossible" << std::endl;
+		else if (isprint(static_cast<char>(value)))
+			std::cout << "char: '" << static_cast<char>(value) << "'" << std::endl;
+		else
+			std::cout << "char: Non displayable" << std::endl;
+		std::cout << "int: " << static_cast<int>(value) << std::endl;
+	}
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: " << value << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(value) << std::endl;
 }
 
-void ScalarConverter::convertDouble(const std::string &literal)
+void ScalarConverter::convertFromDouble(double value)
 {
-	std::cout << "Converting as double: " << std::stod(literal) << std::endl;
+	if (std::isnan(value) || std::isinf(value))
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+	}
+	else
+	{
+		if (value < std::numeric_limits<char>::min() || value > std::numeric_limits<char>::max())
+			std::cout << "char: impossible" << std::endl;
+		else if (isprint(static_cast<char>(value)))
+			std::cout << "char: '" << static_cast<char>(value) << "'" << std::endl;
+		else
+			std::cout << "char: Non displayable" << std::endl;
+		std::cout << "int: " << static_cast<int>(value) << std::endl;
+	}
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: " << static_cast<float>(value) << "f" << std::endl;
+	std::cout << "double: " << value << std::endl;
 }
 
-void ScalarConverter::convert(std::string literal)
+void ScalarConverter::convert(std::string &literal)
 {
 	switch (identifyType(literal))
 	{
 		case CHAR:
-			convertChar(literal);
+			convertFromChar(literal[0]);
 			break;
 		case INT:
-			convertInt(literal);
+			convertFromInt(std::strtol(literal.c_str(), NULL, 10));
 			break;
 		case FLOAT:
-			convertFloat(literal);
+			convertFromFloat(std::strtof(literal.c_str(), NULL));
 			break;
 		case DOUBLE:
-			convertDouble(literal);
+			convertFromDouble(std::strtod(literal.c_str(), NULL));
 			break;
 		default:
 			std::cerr << "Invalid literal!" << std::endl;
 			break;
 	}
 }
+
+// TO DO: fix repetitive code

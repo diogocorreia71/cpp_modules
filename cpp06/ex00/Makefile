@@ -6,14 +6,14 @@
 #    By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/17 09:42:42 by diodos-s          #+#    #+#              #
-#    Updated: 2024/10/16 10:07:26 by diodos-s         ###   ########.fr        #
+#    Updated: 2024/10/18 09:02:08 by diodos-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ScalarConverter.cpp
+SRCS = main.cpp ScalarConverter.cpp
 
 OBJS = $(SRCS:.cpp=.o)
-NAME = a.out
+NAME = convert
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CPP = c++
 RM = rm -f
