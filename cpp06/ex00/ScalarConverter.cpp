@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:18:51 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/22 10:05:53 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/22 10:58:11 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,11 @@ void ScalarConverter::convert(std::string &literal)
 			long int intValue = std::strtol(literal.c_str(), NULL, 10);
 			
 			if (errno == ERANGE || intValue > std::numeric_limits<int>::max() || intValue < std::numeric_limits<int>::min())
+			{
+				std::cout << "char: Non displayable" << std::endl;
 				std::cout << "int: impossible" << std::endl;
+				printFloatAndDoubleConversion(std::strtod(literal.c_str(), NULL));
+			}
 			else
 				convertFromInt(static_cast<int>(intValue));
 			break;
