@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:07:38 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/22 10:47:43 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:32:58 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,10 @@ class ScalarConverter
 		enum Type { CHAR, INT, FLOAT, DOUBLE, INVALID };
 
 		static Type identifyType(const std::string &literal);
-		static void printCharConversion(double value);
-		static void printIntConversion(double value);
-		static void printFloatAndDoubleConversion(double value);
-		static void convertFromChar(char value);
-		static void convertFromInt(int value);
-		static void convertFromFloat(float value);
-		static void convertFromDouble(double value);
+		static void convertChar(const std::string &literal);
+		static void convertInt(const std::string &literal);
+		static void convertFloat(const std::string &literal);
+		static void convertDouble(const std::string &literal);
 		
 		ScalarConverter();
 		ScalarConverter(const ScalarConverter &other);
