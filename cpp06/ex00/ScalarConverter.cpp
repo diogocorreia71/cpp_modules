@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:18:51 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/23 15:08:25 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:38:34 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,17 @@ ScalarConverter::Type ScalarConverter::identifyType(const std::string &literal)
         return CHAR;
 
     char *end;
+
     std::strtol(literal.c_str(), &end, 10);
     if (*end == '\0')
         return INT;
 
-    if (literal.find('f') != std::string::npos && literal[literal.length() - 1] == 'f')
-        return FLOAT;
+    if (literal[literal.length() - 1] == 'f' && literal.find('.') != std::string::npos)
+	{
+		std::strtof(literal.c_str(), &end);
+		if (*end == 'f' && *(end + 1) == '\0')
+        	return FLOAT;
+	}
 
     std::strtod(literal.c_str(), &end);
     if (*end == '\0')
