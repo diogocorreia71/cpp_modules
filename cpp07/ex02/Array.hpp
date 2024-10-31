@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 13:08:36 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/30 15:41:52 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/31 09:45:26 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ class Array
 	~Array();
 
 	T &operator[](unsigned int i);
+	unsigned int size() const;
+	class OutOfBounds : public std::exception
+	{
+		const char *what() const throw();
+	};
 };
 
 #endif /* ARRAY_HPP */
