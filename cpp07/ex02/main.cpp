@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 09:37:18 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/31 10:22:07 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/10/31 12:15:41 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,18 @@ int main()
 	{
 		std::cerr << "Caught exception: " << e.what() << '\n';
 	}
+
+	std::cout << std::endl;
+	
+	Array<std::string> stringArray(3);
+	stringArray[0] = "Hello";
+	stringArray[1] = "World";
+	stringArray[2] = "Array Template";
+
+	std::cout << "Elements of stringArray: ";
+	for (unsigned int i = 0; i < stringArray.size(); i++)
+		std::cout << stringArray[i] << " ";
+	std::cout << std::endl;
 	
 	return 0;
 }
