@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 09:37:18 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/10/31 12:15:41 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/11/05 10:26:47 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,9 @@ int main()
 	stringArray[0] = "Hello";
 	stringArray[1] = "World";
 	stringArray[2] = "Array Template";
+
+	std::cout << "Size of stringArray: " << stringArray.size() << std::endl;
+	std::cout << std::endl;
 
 	std::cout << "Elements of stringArray: ";
 	for (unsigned int i = 0; i < stringArray.size(); i++)
