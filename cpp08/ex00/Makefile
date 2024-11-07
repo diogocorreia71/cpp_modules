@@ -6,14 +6,14 @@
 #    By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/17 09:42:42 by diodos-s          #+#    #+#              #
-#    Updated: 2024/10/29 11:59:37 by diodos-s         ###   ########.fr        #
+#    Updated: 2024/11/07 15:42:53 by diodos-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
-NAME = a.out
+NAME = easyfind
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 CPP = c++
 RM = rm -f
