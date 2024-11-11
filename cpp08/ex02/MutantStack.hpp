@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 08:49:13 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/11/11 11:14:37 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/11/11 14:38:59 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stack>
 #include <iterator>
 #include <iostream>
+#include <list>
 
 template <typename T>
 class MutantStack : public std::stack<T>
