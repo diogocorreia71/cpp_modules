@@ -20,7 +20,7 @@ BitcoinExchange::BitcoinExchange()
 BitcoinExchange::BitcoinExchange(std::string inFile)
 {
 	createDatabase();
-	readFile(file);
+	// readFile(file);
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &other)
@@ -42,4 +42,25 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
 BitcoinExchange::~BitcoinExchange()
 {
 	std::cout << "BitcoinExchange destructor called" << std::endl;
+}
+
+void BitcoinExchange::createDatabase()
+{
+	std::ifstream dataFile("data.csv");
+	std::string str;
+
+	if (!dataFile.is_open())
+	{
+		std::cerr << "Error: could not open file." << std::endl;
+		return;
+	}
+	int i = 0;
+	while (std::getline(dataFile, str))
+	{
+		// if (i++ == 0)
+		// 	continue;
+		std::string date = str.substr(0, str.find(','));
+		std::string rate = str.substr(str.find(',') + 1);
+		this->_database[date] = atof(rate.c_str());
+	}
 }
