@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:48:50 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/11/14 12:34:37 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/11/18 16:00:04 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 #include <iostream>
 #include <map>
 #include <fstream>
+#include <cstdlib>
+#include <string>
+#include <sstream>
 
 class BitcoinExchange
 {
@@ -32,6 +35,7 @@ class BitcoinExchange
 	void createDatabase();
 	void readFile(std::string file);
 	float findValue(std::string date);
+	bool isValidDate(const std::string &date);
 };
 
 #endif /* BitcoinExchange_HPP */
