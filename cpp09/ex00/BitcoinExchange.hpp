@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:48:50 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/11/18 16:00:04 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/11/19 09:30:44 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <cstdlib>
 #include <string>
 #include <sstream>
+#include <iomanip>
 
 class BitcoinExchange
 {

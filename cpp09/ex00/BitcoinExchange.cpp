@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:49:01 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/11/18 16:33:11 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/11/19 09:42:44 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,11 @@ void BitcoinExchange::readFile(std::string file)
 		}
 		
 		float result = rate * static_cast<float>(value);
-		std::cout << date << " => " << value << " = " << result << std::endl;
+		// std::cout << date << " => " << value << " = " << result << std::endl;
+		if (result >= 1000000.0)
+			std::cout << std::fixed << std::setprecision(2) << date << " => " << value << " = " << result << std::endl;
+		else
+			std::cout << date << " => " << value << " = " << result << std::endl;
 	}
 }
 
