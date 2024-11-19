@@ -6,11 +6,11 @@
 #    By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/17 09:42:42 by diodos-s          #+#    #+#              #
-#    Updated: 2024/11/13 14:24:08 by diodos-s         ###   ########.fr        #
+#    Updated: 2024/11/19 14:39:34 by diodos-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.cpp
+SRCS = main.cpp PmergeMe.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 NAME = PmergeMe
