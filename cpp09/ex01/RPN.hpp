@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 09:45:16 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/11/19 14:22:33 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/11/20 10:15:08 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ class RPN
 	~RPN();
 
 	void calculate(std::string str);
-	int evaluate();
 };
 
 #endif /* RPN_HPP */
