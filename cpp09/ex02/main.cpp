@@ -6,58 +6,105 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:39:46 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/11/21 15:34:28 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/11/26 18:14:05 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <vector>
-#include <utility>
+#include <algorithm>
 
-std::vector<int> mergeInsertionSort(std::vector<int> vec)
+int binarySearch(const std::vector<int>& vec, int value, int left, int right)
 {
-	// create pairs
-	std::vector<std::pair<int, int> > pairs;
-
-	for (std::size_t i = 0; i < vec.size(); i += 2)
+	while (left < right)
 	{
-		pairs.push_back(std::make_pair(vec[i], vec[i + 1]));
+		int mid = left + (right - left) / 2;
+		if (vec[mid] < value)
+		{
+			left = mid + 1;
+		}
+		else
+		{
+			right = mid;
+		}
 	}
-	
-	for (std::size_t i = 0; i < pairs.size(); i++)
+	return left;
+}
+
+void fordJohnsonRecursive(std::vector<int>& vec, int left, int right)
+{
+	int size = right - left + 1;
+	if (size <= 1)
+		return;
+
+	// if size 2 direct swap
+	if (size == 2)
 	{
-		std::cout << "(" << pairs[i].first << ", " << pairs[i].second << ")" << std::endl;
+		if (vec[left] > vec[right])
+		{
+			std::swap(vec[left], vec[right]);
+		}
+		return;
 	}
 
-	std::cout << std::endl;
+	// divide into pairs
+	int mid = left + (size / 2);
+	std::vector<int> smaller, larger;
 
-	// determine larger element of the pair
-	for (std::size_t i = 0; i < pairs.size(); i++)
+	for (int i = left; i < mid; ++i)
 	{
-		if (pairs[i].first > pairs[i].second)
-			std::swap(pairs[i].first, pairs[i].second);
+		if (vec[i] > vec[i + mid - left])
+		{
+			larger.push_back(vec[i]);
+			smaller.push_back(vec[i + mid - left]);
+		}
+		else
+		{
+			larger.push_back(vec[i + mid - left]);
+			smaller.push_back(vec[i]);
+		}
 	}
+	// handle odd size
+	if (size % 2 == 1)
+		smaller.push_back(vec[right]);
 
-	for (std::size_t i = 0; i < pairs.size(); i++)
+	fordJohnsonRecursive(larger, 0, larger.size() - 1);
+
+	// insert smaller elements into the larger group
+	std::vector<int> sortedChain = larger;
+	for (int i = 0; i < smaller.size(); ++ i)
 	{
-		std::cout << "(" << pairs[i].first << ", " << pairs[i].second << ")" << std::endl;
+		int position = binarySearch(sortedChain, smaller[i], 0, sortedChain.size());
+		sortedChain.insert(sortedChain.begin() + position, smaller[i]);
 	}
 
-	std::vector<int> largest;
-	for (std::size_t i = 0; i < pairs.size(); i++)
+	// write the sorted result back into the original vector
+	for (int i = 0; i < sortedChain.size(); ++i)
 	{
-		largest.push_back(pairs[i].second);
+		vec[left + i] = sortedChain[i];
 	}
-	largest = mergeInsertionSort(largest);
+}
 
-	return largest;
+void fordJohnsonSort(std::vector<int>& vec)
+{
+	fordJohnsonRecursive(vec, 0, vec.size() - 1);
 }
 
 int main()
 {
-	std::vector<int> vec = {62, 32, 25, 92, 26, 15, 96, 2, 51, 89, 42, 12};
-	mergeInsertionSort(vec);
+	std::vector<int> vec = {62, 32, 25, 92, 26, 15, 96, 2, 51, 89, 42, 12, 1};
 
+	std::cout << "Original array: " << std::endl;
+	for (int num : vec) 
+		std::cout << num << " ";
+	std::cout << std::endl;
+	
+	fordJohnsonSort(vec);
+
+	std::cout << "Sorted array: " << std::endl;
+	for (int num : vec)
+		std::cout << num << " " ;
+	std::cout << std::endl;
 
 	return 0;
 }
