@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 09:45:16 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/11/20 10:15:08 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/11/28 12:06:57 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <climits>
+#include <cstdlib>
 
 class RPN
 {

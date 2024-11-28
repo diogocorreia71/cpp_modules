@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 09:45:18 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/11/20 10:16:13 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/11/28 12:09:03 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,21 @@ void RPN::calculate(std::string str)
 
 	while (input >> token)
 	{
-		if (token.size() == 1 && std::isdigit(token[0]))
-		{
-			_stack.push(token[0] - '0');
-		}
+		if ((token[0] == '-' && token.length() > 1 && std::isdigit(token[1])) || std::isdigit(token[0]))
+        {
+            int num;
+            try
+            {
+                num = std::atoi(token.c_str());
+                if (num == 0 && token != "0")
+                    throw std::runtime_error("Error: Invalid number in expression");
+            }
+            catch (const std::exception& e)
+            {
+                throw std::runtime_error("Error: Invalid number in expression");
+            }
+            _stack.push(num);
+        }
 		else if (token.size() == 1 && (token == "+" || token == "-" || token == "*" || token == "/"))
 		{
 			if (_stack.size() < 2)
