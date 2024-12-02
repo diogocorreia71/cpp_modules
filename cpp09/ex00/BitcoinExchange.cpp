@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:49:01 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/11/19 09:42:44 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/12/02 09:30:29 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 BitcoinExchange::BitcoinExchange()
 {
-	std::cout << "BitcoinExchange default constructor called" << std::endl;
+	// std::cout << "BitcoinExchange default constructor called" << std::endl;
 }
 
 BitcoinExchange::BitcoinExchange(std::string inFile)
@@ -25,7 +25,7 @@ BitcoinExchange::BitcoinExchange(std::string inFile)
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &other)
 {
-	std::cout << "BitcoinExchange copy constructor called" << std::endl;
+	// std::cout << "BitcoinExchange copy constructor called" << std::endl;
 	*this = other;
 }
 
@@ -35,13 +35,13 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
 	{
 		this->_database = other._database;
 	}
-	std::cout << "BitcoinExchange assignment operator called" << std::endl;
+	// std::cout << "BitcoinExchange assignment operator called" << std::endl;
 	return *this;
 }
 
 BitcoinExchange::~BitcoinExchange()
 {
-	std::cout << "BitcoinExchange destructor called" << std::endl;
+	// std::cout << "BitcoinExchange destructor called" << std::endl;
 }
 
 void BitcoinExchange::createDatabase()
