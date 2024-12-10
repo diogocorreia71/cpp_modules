@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:40:10 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/12/02 10:41:21 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:42:55 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,41 +16,48 @@
 #include <iostream>
 #include <vector>
 #include <deque>
-#include <algorithm>
+#include <stack>
 #include <ctime>
-#include <cmath>
-#include <iterator>
-#include <iomanip>
+#include <exception>
 
 class PmergeMe 
 {
-  private:
-	std::vector<int> _vec;
-	std::deque<int> _deque;
+	public:
+		PmergeMe();
+		PmergeMe(const PmergeMe &other);
+		PmergeMe &operator=(const PmergeMe &other);
+		~PmergeMe();
+		
+		class PmergeMeVector
+		{
+			private:
+				std::vector<int> vec;
+				std::vector<int> pos;
+				std::vector<std::pair<int, int> > vecPair;
+				std::vector<int> mainChain;
+				std::vector<int> secChain;
+				std::vector<int> jacobSeq;
 
-  public:
-	PmergeMe();
-	PmergeMe(const PmergeMe &other);
-	PmergeMe &operator=(const PmergeMe &other);
-	~PmergeMe();
+				std::vector<int> fillVector(int argc, char **argv);
+				void createVectorPairs();
+				void sortVectorPairs();
+				void merge(std::vector<std::pair<int, int> > &array, int begin, int mid, int end);
+				void mergeSort(std::vector<std::pair<int, int> > &array, int begin, int end);
+				void createMainChainAndSec();
+				int binarySearch(std::vector<int> array, int target, int begin, int end);
+				void generateJacobSeq();
+				int jacobsthal(int n);
+				void generatePos();
+				void insertToMainChain();
+				
+			public:
+				PmergeMeVector();
+				~PmergeMeVector();
+				void applyFordJohnsonSort(char **argv);
+				void printBefore();
+				void printAfter();
+		};
 
-	// vector
-	int binarySearch(const std::vector<int>& vec, int value, int left, int right);
-	void fordJohnsonRecursive(std::vector<int>& vec, int left, int right);
-	void fordJohnsonSort(std::vector<int>& vec);
-	
-	// list
-	int binarySearch(const std::deque<int>& deq, int value, int left, int right);
-	void fordJohnsonRecursive(std::deque<int>& deq, int left, int right);
-	void fordJohnsonSort(std::deque<int>& deq);
-	
-	std::vector<int> fillVector(int argc, char **argv);
-	std::deque<int> fillDeque(int argc, char **argv);
-
-	class Errors : public std::exception
-	{
-		const char *what() const throw();
-	};
 };
 
 #endif /* PMERGEME_HPP */
