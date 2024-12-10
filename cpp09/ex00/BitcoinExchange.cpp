@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:49:01 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/12/02 09:30:29 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/12/10 09:34:55 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void BitcoinExchange::readFile(std::string file)
 		
 		char* endPtr;
 		double value = std::strtod(valueStr.c_str(), &endPtr);
-		if (*endPtr != '\0' || value <= 0 || value > 1000)
+		if (*endPtr != '\0' || value < 0 || value > 1000)
 		{
 			std::cerr << "Error: invalid value in line: " << line << std::endl;
 			continue;
