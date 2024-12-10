@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 09:45:18 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/11/28 12:09:03 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/12/10 10:56:12 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ void RPN::calculate(std::string str)
 	{
 		if ((token[0] == '-' && token.length() > 1 && std::isdigit(token[1])) || std::isdigit(token[0]))
         {
-            int num;
+            long num;
             try
             {
-                num = std::atoi(token.c_str());
+                num = std::atol(token.c_str());
                 if (num == 0 && token != "0")
                     throw std::runtime_error("Error: Invalid number in expression");
             }
@@ -65,11 +65,11 @@ void RPN::calculate(std::string str)
 		{
 			if (_stack.size() < 2)
 				throw std::runtime_error("Error: Not enough operands for operation");
-			int b = _stack.top();
+			long b = _stack.top();
 			_stack.pop();
-			int a = _stack.top();
+			long a = _stack.top();
 			_stack.pop();
-			int result = 0;
+			long result = 0;
 
 			if (token == "+")
 			{
@@ -79,7 +79,7 @@ void RPN::calculate(std::string str)
 			}
 			else if (token == "-")
 			{
-				if ((b < 0 && a > INT_MAX + b) || (b > 0 && a < INT_MIN + b))
+				if ((b > 0 && a > INT_MAX + b) || (b < 0 && a < INT_MIN + b))
 					throw std::runtime_error("Error: Overflow in subtraction");
 				result = a - b;
 			}
@@ -93,6 +93,8 @@ void RPN::calculate(std::string str)
 			{
 				if (b == 0)
 					throw std::runtime_error("Error: Division by zero");
+				else if (a != 0 && (b > INT_MAX + a || b < INT_MIN + a))
+					throw std::runtime_error("Error: Overflow in division");
 				result = a / b;
 			}
 

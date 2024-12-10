@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 09:45:16 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/11/28 12:06:57 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/12/10 10:01:55 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 class RPN
 {
   private:
-	std::stack<int> _stack;
+	std::stack<long> _stack;
 
   public:
 	RPN();
