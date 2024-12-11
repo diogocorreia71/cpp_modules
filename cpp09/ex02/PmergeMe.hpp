@@ -38,7 +38,7 @@ class PmergeMe
 				std::vector<int> secChain;
 				std::vector<int> jacobSeq;
 
-				std::vector<int> fillVector(int argc, char **argv);
+				void fillVector(int argc, char **argv);
 				void createVectorPairs();
 				void sortVectorPairs();
 				void merge(std::vector<std::pair<int, int> > &array, int begin, int mid, int end);
