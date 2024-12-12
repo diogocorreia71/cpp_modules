@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:40:10 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/12/10 17:42:55 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/12/12 10:42:20 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <stack>
 #include <ctime>
 #include <exception>
+#include <cstdlib>
 
 class PmergeMe 
 {
@@ -53,9 +54,17 @@ class PmergeMe
 			public:
 				PmergeMeVector();
 				~PmergeMeVector();
-				void applyFordJohnsonSort(char **argv);
+				void applyFordJohnsonSort(int argc, char **argv);
 				void printBefore();
 				void printAfter();
+		};
+		
+		class exception : public std::exception
+		{
+			public:
+				exception();
+				virtual ~exception() throw();
+				virtual const char *what() const throw();
 		};
 
 };
