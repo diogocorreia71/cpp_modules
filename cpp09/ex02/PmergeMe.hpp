@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:40:10 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/12/12 10:42:20 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/12/13 15:53:56 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,50 +23,62 @@
 
 class PmergeMe 
 {
+	private:
+		std::vector<int> _vec;
+		std::vector<int> _pos;
+		std::vector<std::pair<int, int> > _vecPair;
+		std::vector<int> _mainChain;
+		std::vector<int> _secChain;
+		std::vector<int> _jacobSeq;
+
+		std::deque<int> _deq;
+		std::deque<int> _posDeq;
+		std::deque<std::pair<int, int> > _deqPair;
+		std::deque<int> _mainChainDeq;
+		std::deque<int> _secChainDeq;
+		std::deque<int> _jacobSeqDeq;
+
+
+		// Vector functions
+		void fillVector(int argc, char **argv);
+		void createVectorPairs();
+		void sortVectorPairs();
+		void merge(std::vector<std::pair<int, int> > &array, int begin, int mid, int end);
+		void mergeSort(std::vector<std::pair<int, int> > &array, int begin, int end);
+		void createMainChainAndSec();
+		int binarySearch(std::vector<int> array, int target, int begin, int end);
+		void generateJacobSeq();
+		int jacobsthal(int n);
+		void generatePos();
+		void insertToMainChain();
+
+		// Deque functions
+		void fillDeque(int argc, char **argv);
+		void createDequePairs();
+		void sortDequePairs();
+		void mergeDeque(std::deque<std::pair<int, int> > &array, int begin, int mid, int end);
+		void mergeSortDeque(std::deque<std::pair<int, int> > &array, int begin, int end);
+		void createChainsDeque();
+		int binarySearchDeque(std::deque<int> array, int target, int begin, int end);
+		void generateJacobDeque();
+		void generatePosDeque();
+		void insertToMainChainDeq();
+		
 	public:
 		PmergeMe();
 		PmergeMe(const PmergeMe &other);
 		PmergeMe &operator=(const PmergeMe &other);
 		~PmergeMe();
 		
-		class PmergeMeVector
-		{
-			private:
-				std::vector<int> vec;
-				std::vector<int> pos;
-				std::vector<std::pair<int, int> > vecPair;
-				std::vector<int> mainChain;
-				std::vector<int> secChain;
-				std::vector<int> jacobSeq;
-
-				void fillVector(int argc, char **argv);
-				void createVectorPairs();
-				void sortVectorPairs();
-				void merge(std::vector<std::pair<int, int> > &array, int begin, int mid, int end);
-				void mergeSort(std::vector<std::pair<int, int> > &array, int begin, int end);
-				void createMainChainAndSec();
-				int binarySearch(std::vector<int> array, int target, int begin, int end);
-				void generateJacobSeq();
-				int jacobsthal(int n);
-				void generatePos();
-				void insertToMainChain();
-				
-			public:
-				PmergeMeVector();
-				~PmergeMeVector();
-				void applyFordJohnsonSort(int argc, char **argv);
-				void printBefore();
-				void printAfter();
-		};
+		void applyFordJohnsonSort(int argc, char **argv);
+		void applyFordJohnsonDeq(int argc, char **argv);
+		void printBefore();
+		void printAfter();
 		
 		class exception : public std::exception
 		{
-			public:
-				exception();
-				virtual ~exception() throw();
-				virtual const char *what() const throw();
+			const char *what() const throw();
 		};
-
 };
 
 #endif /* PMERGEME_HPP */

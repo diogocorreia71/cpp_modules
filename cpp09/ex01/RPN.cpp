@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 09:45:18 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/12/10 10:56:12 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/12/13 13:10:24 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void RPN::calculate(std::string str)
 
 	while (input >> token)
 	{
-		if ((token[0] == '-' && token.length() > 1 && std::isdigit(token[1])) || std::isdigit(token[0]))
+		if (token.length() == 1 && std::isdigit(token[0]))
         {
             long num;
             try
