@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:39:46 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/12/13 17:17:36 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/12/13 18:05:19 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,15 @@ int main(int argc, char **argv)
 		timeDeq = clock() - timeDeq;
 
 		std::cout << "Before: ";
-		pmVec.printBefore();
+		pmVec.printBefore(argc, argv);
 		std::cout << std::endl;
 
-		std::cout << "After: ";
+		std::cout << "Vector: ";
 		pmVec.printAfter();
+		std::cout << std::endl;
+
+		std::cout << "Deque: ";
+		pmDeq.printDeque();
 		std::cout << std::endl;
 
 		std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector : " << (float)timeVec * 1000 / CLOCKS_PER_SEC << " ms" << std::endl;
@@ -52,6 +56,5 @@ int main(int argc, char **argv)
 		std::cerr << e.what() << '\n';
 	}
 		
-
     return 0;
 }

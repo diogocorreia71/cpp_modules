@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:39:55 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/12/13 17:35:25 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/12/13 18:04:39 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ bool PmergeMe::isNumeric(const char *str)
 
 void PmergeMe::fillVector(int argc, char **argv)
 {
-	for (int i = 1; i < argc ; i++)
+	for (int i = 1; i < argc; i++)
 	{
 		if (!isNumeric(argv[i]))
 			throw exception();
@@ -291,7 +291,7 @@ void PmergeMe::mergeDeque(std::deque<std::pair<int, int> > &array, int begin, in
 	}
 	while (leftArrayIndex < leftArray.size())
 	{
-		array[mergedArrayIndex] = rightArray[rightArrayIndex];
+		array[mergedArrayIndex] = leftArray[leftArrayIndex];
 		leftArrayIndex++;
 		mergedArrayIndex++;
 	}
@@ -450,12 +450,13 @@ void PmergeMe::applyFordJohnsonDeq(int argc, char **argv)
 	}
 }
 
-void PmergeMe::printBefore()
+void PmergeMe::printBefore(int argc, char **argv)
 {
-	for (unsigned int i = 0; i < this->_vec.size(); i++)
+	for (int i = 1; i < argc; i++)
 	{
-		std::cout << this->_vec.at(i) << " ";
+		std::cout << argv[i] << " ";
 	}
+	std::cout << std::endl;
 }
 
 void PmergeMe::printAfter()
@@ -464,4 +465,14 @@ void PmergeMe::printAfter()
 	{
 		std::cout << this->_mainChain.at(i) << " ";
 	}
+	std::cout << std::endl;
+}
+
+void PmergeMe::printDeque()
+{
+	for (unsigned int i = 0; i < this->_mainChainDeq.size(); i++)
+	{
+		std::cout << this->_mainChainDeq.at(i) << " ";
+	}
+	std::cout << std::endl;
 }
