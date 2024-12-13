@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:40:10 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/12/13 15:53:56 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/12/13 17:32:39 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ class PmergeMe
 		PmergeMe(const PmergeMe &other);
 		PmergeMe &operator=(const PmergeMe &other);
 		~PmergeMe();
-		
+
+		bool isNumeric(const char *str);
 		void applyFordJohnsonSort(int argc, char **argv);
 		void applyFordJohnsonDeq(int argc, char **argv);
 		void printBefore();

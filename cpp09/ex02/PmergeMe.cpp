@@ -6,7 +6,7 @@
 /*   By: diodos-s <diodos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:39:55 by diodos-s          #+#    #+#             */
-/*   Updated: 2024/12/13 16:02:11 by diodos-s         ###   ########.fr       */
+/*   Updated: 2024/12/13 17:35:25 by diodos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,25 @@ const char* PmergeMe::exception::what() const throw()
 	return "Error";
 }
 
+bool PmergeMe::isNumeric(const char *str)
+{
+	while (*str)
+	{
+		if (!std::isdigit(*str))
+			return false;
+		str++;
+	}
+	return true;
+}
+
 // VECTOR FUNCTIONS
 
 void PmergeMe::fillVector(int argc, char **argv)
 {
 	for (int i = 1; i < argc ; i++)
 	{
+		if (!isNumeric(argv[i]))
+			throw exception();
 		this->_vec.push_back(std::atoi(argv[i]));
 		if (this->_vec.back() < 0)
 			throw exception();
@@ -224,8 +237,10 @@ void PmergeMe::insertToMainChain()
 
 void PmergeMe::fillDeque(int argc, char **argv)
 {
-	for (int i = 0; i < argc; i++)
+	for (int i = 1; i < argc; i++)
 	{
+		if (!isNumeric(argv[i]))
+			throw exception();
 		this->_deq.push_back(std::atoi(argv[i]));
 		if (this->_deq.back() < 0)
 			throw exception();
@@ -242,7 +257,7 @@ void PmergeMe::createDequePairs()
 
 void PmergeMe::sortDequePairs()
 {
-	for (size_t i = 0; i < _deqPair.size(); i++)
+	for (size_t i = 0; i < this->_deqPair.size(); i++)
 	{
 		if (this->_deqPair.at(i).first < this->_deqPair.at(i).second)
 		{
@@ -306,7 +321,7 @@ void PmergeMe::createChainsDeque()
 
 	for (size_t i = 0; i < this->_deqPair.size(); i++)
 	{
-		_mainChainDeq.push_back(this->_vecPair.at(i).first);
+		_mainChainDeq.push_back(this->_deqPair.at(i).first);
 		_secChainDeq.push_back(this->_deqPair.at(i).second);
 	}
 }
